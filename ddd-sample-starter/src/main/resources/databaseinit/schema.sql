@@ -1,0 +1,2 @@
+CREATE TABLE customer (id bigint auto_increment NOT NULL,id_employee bigint DEFAULT NULL,name varchar(255) DEFAULT NULL,PRIMARY KEY (id));
+CREATE TABLE employee (id bigint auto_increment NOT NULL,allowingAssign tinyint DEFAULT 1,PRIMARY KEY (id));

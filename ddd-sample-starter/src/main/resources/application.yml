@@ -1,0 +1,27 @@
+#配置应该写在配置中心
+
+server:
+  port: 8085
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.example.dddsample.gatewayImpl.database.dataobject
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+logging:
+  level:
+    com.example.dddsample.gatewayImpl.database: debug
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:ddd-example?useAffectedRows=true
+    jdbc-url: jdbc:h2:mem:ddd-example?useAffectedRows=true
+  sql:
+    init:
+      schema-locations: classpath:databaseinit/schema.sql
+      data-locations: classpath:databaseinit/data.sql
+      enabled: true

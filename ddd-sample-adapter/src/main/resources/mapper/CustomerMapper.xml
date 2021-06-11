@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dddsample.gatewayImpl.database.mapper.CustomerMapper">
+    <sql id="ALL_COLUMNS">
+        id,
+        id_employee,
+        name
+    </sql>
+
+    <sql id="COMMON_SELECT">
+        SELECT
+        <include refid="ALL_COLUMNS"/>
+        FROM customer
+    </sql>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id" parameterType="CustomerDO">
+        INSERT INTO customer(
+            <include refid="ALL_COLUMNS"/>
+        ) VALUES (
+        null,
+        #{idEmployee},
+        #{name}
+        )
+    </insert>
+
+    <update id="update" keyProperty="id" parameterType="CustomerDO">
+        UPDATE customer
+        set id_employee = #{idEmployee}, name = #{name}
+        where id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="map">
+        DELETE customer WHERE id = #{id}
+    </delete>
+
+    <select id="listByEmployeeId" resultType="CustomerDO" parameterType="map">
+        <include refid="COMMON_SELECT"/>
+        WHERE id_employee = #{idEmployee}
+        LIMIT #{startRange}, #{pageSize}
+    </select>
+
+    <select id="getTotal" resultType="int">
+        select count(*) from customer
+    </select>
+
+    <select id="countByIdEmployee" resultType="int">
+        select count(*) from customer where id_employee = #{idEmployee}
+    </select>
+
+    <select id="list" resultType="CustomerDO" parameterType="map">
+        <include refid="COMMON_SELECT"/>
+        LIMIT #{offset}, #{size}
+    </select>
+
+    <select id="getById" resultType="CustomerDO" parameterType="map">
+        <include refid="COMMON_SELECT"/>
+        WHERE id = #{id} LIMIT 1
+    </select>
+</mapper>
