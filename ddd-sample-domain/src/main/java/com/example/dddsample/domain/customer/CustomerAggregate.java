@@ -35,7 +35,7 @@ public class CustomerAggregate {
             this.id = customerGateway.add(this);
         }else{
             var rows = customerGateway.update(this);
-            System.out.println("rows "+rows);
+            return rows > 0;
         }
 
         return !Objects.isNull(id) && id > 0;
