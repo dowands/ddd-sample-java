@@ -49,6 +49,9 @@ domain层应该完全框架无关。
 command即是事件风暴中的事件  
 query即是事件风暴中的读模型  
 只能依赖client及infrastructure，方便query直接查询  
+这层有2种写法，可以根据需要来选择：  
+    - 每个事件一个文件，例如：user_created、user_updated
+    - 每个类型一个文件，事件作为方法写在里面，例如：user、cart   
 1. domain  
     本层只能依赖client  
     - 领域层，按不同领域分开  
