@@ -1,7 +1,6 @@
 package com.example.dddsample.domain.customer;
 
 import com.alibaba.cola.exception.BizException;
-import com.alibaba.cola.exception.ErrorEnumI;
 import com.example.dddsample.client.api.CustomerDomainServiceI;
 import com.example.dddsample.client.exception.CustomerError;
 import com.example.dddsample.client.requestobject.CustomerRO;

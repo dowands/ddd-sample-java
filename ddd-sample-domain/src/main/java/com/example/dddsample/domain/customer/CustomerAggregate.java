@@ -6,8 +6,6 @@ import com.example.dddsample.domain.ApplicationContextUtils;
 import com.example.dddsample.domain.customer.facade.CustomerGateway;
 import com.example.dddsample.domain.customer.valobj.EmployeeVO;
 import lombok.Data;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
